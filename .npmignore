@@ -1,0 +1,6 @@
+dist
+.gitignore
+.github
+.babelrc
+rollup.config.js
+tsconfig.json
