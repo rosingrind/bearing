@@ -4,7 +4,7 @@
   "description": "A lightweight customizable \"animation frame\"-bound carousel",
   "main": "dist/index.js",
   "scripts": {
-    "build": "rollup -c && tsc -d --emitDeclarationOnly --declarationDir dist",
+    "build": "rollup -c",
     "start": "rollup -c -w"
   },
   "peerDependencies": {
@@ -45,6 +45,9 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/andrewbrodko/bearing/issues"
+  },
+  "exports": {
+    "./easings/": "./dist/easings/"
   },
   "homepage": "https://github.com/andrewbrodko/bearing#readme",
   "dependencies": {

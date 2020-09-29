@@ -11,7 +11,9 @@
     "allowJs": false,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "typeRoots": ["node_modules/@types"]
+    "typeRoots": ["node_modules/@types"],
+    "rootDir": "./src",
+    "baseUrl": "./src"
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist", "rollup.config.js"]
