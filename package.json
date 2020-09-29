@@ -4,7 +4,7 @@
   "description": "A lightweight customizable \"animation frame\"-bound carousel",
   "main": "dist/index.js",
   "scripts": {
-    "build": "rollup -c && tsc -d --emitDeclarationOnly --declarationDir dist",
+    "build": "rollup -c",
     "start": "rollup -c -w"
   },
   "peerDependencies": {
