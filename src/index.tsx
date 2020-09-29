@@ -11,9 +11,15 @@ const cx = classNames.bind(styles);
 
 const Carousel: React.FC<{
   slides: string[];
-  timing: (x: number) => number;
-  interval: number;
-}> = ({ slides: data, timing, interval }) => {
+  size: { width: number; height: number };
+  animation: {
+    timing: (x: number) => number;
+    speed: number;
+    interval?: number;
+  };
+}> = ({ slides: data, size, animation, animation: { interval } }) => {
+  console.log(size);
+
   const [current, setCurrent] = useState(0);
   const [move, setMove] = useState(0);
   const [slides, setSlides] = useState(data);
@@ -24,9 +30,11 @@ const Carousel: React.FC<{
   }, [data]);
 
   useEffect(() => {
-    if (typeof swipe !== 'undefined') clearInterval(swipe);
-    setSwipe(setInterval(() => getNext(), interval));
-  }, [move]);
+    if (interval) {
+      if (typeof swipe !== 'undefined') clearInterval(swipe);
+      setSwipe(setInterval(() => getNext(), interval));
+    }
+  }, [move, interval]);
 
   const getPrev = () => {
     setCurrent(current - 1 < 0 ? slides.length - 1 : current - 1);
@@ -67,11 +75,10 @@ const Carousel: React.FC<{
             <Slide
               key={key}
               src={s}
+              animation={animation}
               offset={key}
               move={move}
               len={slides.length}
-              timing={timing}
-              fadetime={fadetime}
               imgsize={imgsize}
             />
           ))}
