@@ -35,13 +35,12 @@ const animate = ({
 
 const Slide: React.FC<{
   src: string;
+  animation: { timing: (x: number) => number; speed: number };
   offset: number;
   move: number;
   len: number;
-  timing: (x: number) => number;
-  fadetime: number;
   imgsize: number;
-}> = ({ src, offset, move, len, timing, fadetime, imgsize }) => {
+}> = ({ src, animation: { timing, speed }, offset, move, len, imgsize }) => {
   const [current, setCurrent] = useState(offset);
   const [anim, setAnim] = useState<{ interrupt: () => void }>();
 
@@ -53,16 +52,17 @@ const Slide: React.FC<{
     const end = offset + move;
     const delta = end - start;
 
-    setAnim(
-      animate({
-        timing: timing,
-        draw: (p) => {
-          const point = current + delta * p;
-          setCurrent(point);
-        },
-        duration: fadetime * 1000,
-      })
-    );
+    if (timing)
+      setAnim(
+        animate({
+          timing: timing,
+          draw: (p) => {
+            const point = current + delta * p;
+            setCurrent(point);
+          },
+          duration: speed,
+        })
+      );
   }, [offset, move]);
 
   const pos = (((current % len) + len) % len) - half;
