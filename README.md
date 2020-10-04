@@ -20,27 +20,35 @@ We have several examples in the upcoming wiki. Here is the first one to get you 
 
 ```jsx
 import React from "react";
-import Carousel from "bearing";
+import Bearing from "bearing";
+import { easeInOutSine } from 'bearing/easings';
 
 const props = {
   slides: [
     'http://example.com/image0.png',
     ...
   ],
-  timing: (x) => x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2,
-  interval: 5000
+  size: {
+    width: 1138,
+    height: 430
+  },
+  animation: {
+    timing: easeInOutSine,
+    speed: 500,
+    interval: 2000
+  }
 };
 
 const App = () => {
   // your code here
 
-  return <Carousel {...props} />;
+  return <Bearing {...props} />;
 };
 
 export default App;
 ```
 
-This example will render carousel element with slides animated by easing function by declared interval on the page.
+This example will render carousel element with slides of `size` animated by easing `timing` function with declared animation speed and interval on the page.
 
 ## Contributing
 
