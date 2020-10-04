@@ -4,14 +4,14 @@ import styles from './index.module.scss';
 import './index.scss';
 import Slide from './Slide';
 
-const fadetime = parseFloat(styles.fadetime);
-const imgsize = parseFloat(styles.imgsize);
-
 const cx = classNames.bind(styles);
 
 const Carousel: React.FC<{
   slides: string[];
-  size: { width: number; height: number };
+  size: {
+    width: number;
+    height: number;
+  };
   animation: {
     timing: (x: number) => number;
     speed: number;
@@ -24,6 +24,7 @@ const Carousel: React.FC<{
   const [move, setMove] = useState(0);
   const [slides, setSlides] = useState(data);
   const [swipe, setSwipe] = useState<number | undefined>();
+  // const [maxW, setMaxW] = useState<number | undefined>(0);
 
   useEffect(() => {
     if (data.length === 2) setSlides([...data, ...data]);
@@ -64,13 +65,25 @@ const Carousel: React.FC<{
     dot: (selected: boolean) => cx({ dot: true, selected }),
   };
 
+  // for (const s of slides) {
+  //   const img = new Image();
+  //   img.onload = function () {
+  //     if (this.width > maxW) setMaxW(this.width);
+  //   };
+  //   img.src = s;
+  // }
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.carousel}>
         <div>
-          <div>
-            <img src={slides[0]} alt={slides[0]} />
-          </div>
+          <span
+            style={{
+              visibility: 'hidden',
+              width: `${size.width}px`,
+              height: `${size.height}px`,
+            }}
+          ></span>
           {slides.map((s, key) => (
             <Slide
               key={key}
@@ -79,7 +92,7 @@ const Carousel: React.FC<{
               offset={key}
               move={move}
               len={slides.length}
-              imgsize={imgsize}
+              size={size}
             />
           ))}
         </div>

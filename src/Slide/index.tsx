@@ -39,8 +39,11 @@ const Slide: React.FC<{
   offset: number;
   move: number;
   len: number;
-  imgsize: number;
-}> = ({ src, animation: { timing, speed }, offset, move, len, imgsize }) => {
+  size: {
+    width: number;
+    height: number;
+  };
+}> = ({ src, animation: { timing, speed }, offset, move, len, size }) => {
   const [current, setCurrent] = useState(offset);
   const [anim, setAnim] = useState<{ interrupt: () => void }>();
 
@@ -67,14 +70,16 @@ const Slide: React.FC<{
 
   const pos = (((current % len) + len) % len) - half;
   return (
-    <img
-      src={src}
-      alt={src}
+    <div
       className={styles.slide}
       style={{
-        left: `${pos * imgsize}px`,
+        width: `${size.width}px`,
+        height: `${size.height}px`,
+        left: `${pos * size.width}px`,
       }}
-    />
+    >
+      <img src={src} alt={src} />
+    </div>
   );
 };
 
