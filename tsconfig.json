@@ -5,16 +5,14 @@
     "target": "es5",
     "module": "es2015",
     "lib": ["es2015", "es2016", "es2017", "dom"],
-    "strict": true,
+    "declaration": true,
+    "declarationMap": true,
     "sourceMap": true,
+    "strict": true,
     "allowSyntheticDefaultImports": true,
-    "allowJs": false,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "typeRoots": ["node_modules/@types"],
-    "rootDir": "./src",
-    "baseUrl": "./src"
+    "typeRoots": ["node_modules/@types"]
   },
-  "include": ["src"],
   "exclude": ["node_modules", "dist", "rollup.config.js"]
 }
