@@ -17,8 +17,8 @@ const bearing = {
       writeDefinitions: false,
     }),
     typescript({
-      outDir: './dist',
-      declaration: true,
+      exclude: ['./src/easings/**'],
+      rootDir: './src',
       declarationDir: './dist',
     }),
   ],
@@ -28,12 +28,18 @@ const bearing = {
 const easings = {
   input: './src/easings/index.ts',
   output: {
-    dir: './dist/easings',
+    dir: './easings',
     format: 'cjs',
     exports: 'named',
     sourcemap: true,
   },
-  plugins: [typescript({ outDir: './dist/easings' })],
+  plugins: [
+    typescript({
+      include: ['./src/easings/**'],
+      rootDir: './src/easings',
+      declarationDir: './easings',
+    }),
+  ],
 };
 
 const configs = [bearing, easings];
