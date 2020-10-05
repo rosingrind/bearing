@@ -18,8 +18,6 @@ const Carousel: React.FC<{
     interval?: number;
   };
 }> = ({ slides: data, size, animation, animation: { interval } }) => {
-  console.log(size);
-
   const [current, setCurrent] = useState(0);
   const [move, setMove] = useState(0);
   const [slides, setSlides] = useState(data);
