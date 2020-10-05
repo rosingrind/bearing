@@ -18,8 +18,6 @@ const Carousel: React.FC<{
     interval?: number;
   };
 }> = ({ slides: data, size, animation, animation: { interval } }) => {
-  console.log(size);
-
   const [current, setCurrent] = useState(0);
   const [move, setMove] = useState(0);
   const [slides, setSlides] = useState(data);
@@ -75,15 +73,14 @@ const Carousel: React.FC<{
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.carousel}>
+      <div
+        className={styles.carousel}
+        style={{
+          width: `${size.width}px`,
+          height: `${size.height}px`,
+        }}
+      >
         <div>
-          <span
-            style={{
-              visibility: 'hidden',
-              width: `${size.width}px`,
-              height: `${size.height}px`,
-            }}
-          ></span>
           {slides.map((s, key) => (
             <Slide
               key={key}

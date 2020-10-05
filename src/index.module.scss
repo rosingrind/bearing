@@ -11,37 +11,27 @@
     rgba(0, 0, 0, 1) calc(1138px + calc(100% - 1138px) / 2),
     rgba(0, 0, 0, 0.2) calc(1138px + calc(100% - 1138px) / 16 * 15)
   );
-
-  & > div {
-    margin: auto;
-    width: 1138px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-  }
 }
 
 .carousel {
-  width: 100%;
   position: relative;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   & > div {
     position: relative;
     display: flex;
-    width: 100%;
     height: 100%;
+    margin-right: 100%;
   }
 
   & > span {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    padding: 0 8px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
+    display: contents;
 
     & > * {
+      position: absolute;
       padding: 8px;
     }
   }
@@ -50,17 +40,22 @@
 .btn {
   height: 100%;
   width: 6rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
   cursor: pointer;
+
+  &:first-of-type {
+    left: 0;
+  }
+
+  &:last-of-type {
+    right: 0;
+  }
 }
 
 .dots {
   display: flex;
   justify-content: center;
   width: 100%;
+  bottom: 0;
 }
 
 .dot {
