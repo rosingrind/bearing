@@ -22,18 +22,27 @@ const Carousel: React.FC<{
   const [move, setMove] = useState(0);
   const [slides, setSlides] = useState(data);
   const [swipe, setSwipe] = useState<number | undefined>();
-  // const [maxW, setMaxW] = useState<number | undefined>(0);
+  const [focused, setFocused] = useState(true);
+
+  useEffect(() => {
+    window.addEventListener('blur', () => setFocused(false));
+    window.addEventListener('focus', () => setFocused(true));
+    return () => {
+      window.removeEventListener('blur', () => setFocused(false));
+      window.removeEventListener('focus', () => () => setFocused(true));
+    };
+  }, []);
 
   useEffect(() => {
     if (data.length === 2) setSlides([...data, ...data]);
   }, [data]);
 
   useEffect(() => {
-    if (interval) {
+    if (interval && focused) {
       if (typeof swipe !== 'undefined') clearInterval(swipe);
       setSwipe(setInterval(() => getNext(), interval));
     }
-  }, [move, interval]);
+  }, [focused, move, interval]);
 
   const getPrev = () => {
     setCurrent(current - 1 < 0 ? slides.length - 1 : current - 1);
