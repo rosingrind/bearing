@@ -16,39 +16,7 @@ The documentation wiki is currently in development stage. It will be open for co
 
 ## Examples
 
-We have several examples in the upcoming wiki. Here is the first one to get you started:
-
-```jsx
-import React from "react";
-import Bearing from "bearing";
-import { easeInOutSine } from 'bearing/easings';
-
-const props = {
-  slides: [
-    'http://example.com/image0.png',
-    ...
-  ],
-  size: {
-    width: 1138,
-    height: 430
-  },
-  animation: {
-    timing: easeInOutSine,
-    speed: 500,
-    interval: 2000
-  }
-};
-
-const App = () => {
-  // your code here
-
-  return <Bearing {...props} />;
-};
-
-export default App;
-```
-
-This example will render carousel element with slides of `size` animated by easing `timing` function with declared animation speed and interval on the page.
+We have several examples in the [examples section](https://github.com/andrewbrodko/bearing/wiki/Examples) of wiki.
 
 ## Contributing
 
