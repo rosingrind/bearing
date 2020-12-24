@@ -23,40 +23,39 @@ const Carousel: React.FC<{
   const [slides, setSlides] = useState(data);
   const [swipe, setSwipe] = useState<number | undefined>();
   const [focused, setFocused] = useState(true);
+  const [rnd, setRnd] = useState(0);
 
   useEffect(() => {
     window.addEventListener('blur', () => setFocused(false));
     window.addEventListener('focus', () => setFocused(true));
+    const int = interval
+      ? setInterval(() => setRnd(Math.random() * 10), interval)
+      : 0;
+
     return () => {
       window.removeEventListener('blur', () => setFocused(false));
       window.removeEventListener('focus', () => () => setFocused(true));
+      if (interval) clearInterval(int);
     };
   }, []);
 
   useEffect(() => {
-    if (data.length === 2) setSlides([...data, ...data]);
-  }, [data]);
+    if (focused) getNext();
+  }, [rnd]);
 
-  useEffect(() => {
-    if (interval && focused) {
-      if (typeof swipe !== 'undefined') clearInterval(swipe);
-      setSwipe(setInterval(() => getNext(), interval));
-    }
-  }, [focused, move, interval]);
-
-  const getPrev = () => {
-    setCurrent(current - 1 < 0 ? slides.length - 1 : current - 1);
-    setMove(move + 1);
+  const getPrev = (m = move, c = current) => {
+    setMove(m + 1);
+    setCurrent(c - 1 < 0 ? data.length - 1 : c - 1);
   };
 
   const getPos = (i: number) => {
-    setCurrent(i);
     setMove(move - (i - current));
+    setCurrent(i);
   };
 
-  const getNext = () => {
-    setCurrent(current + 1 >= slides.length ? 0 : current + 1);
+  const getNext = (m = move, c = current) => {
     setMove(move - 1);
+    setCurrent(c + 1 >= data.length ? 0 : c + 1);
   };
 
   const getOffsets = () => {
@@ -71,14 +70,6 @@ const Carousel: React.FC<{
   const cns = {
     dot: (selected: boolean) => cx({ dot: true, selected }),
   };
-
-  // for (const s of slides) {
-  //   const img = new Image();
-  //   img.onload = function () {
-  //     if (this.width > maxW) setMaxW(this.width);
-  //   };
-  //   img.src = s;
-  // }
 
   return (
     <div className={styles.wrapper}>
