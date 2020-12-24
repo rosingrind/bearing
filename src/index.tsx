@@ -20,10 +20,13 @@ const Carousel: React.FC<{
 }> = ({ slides: data, size, animation, animation: { interval } }) => {
   const [current, setCurrent] = useState(0);
   const [move, setMove] = useState(0);
-  const [slides, setSlides] = useState(data);
+  const [slides, setSlides] = useState(
+    data.length <= 3 ? [...data, ...data] : data
+  );
   const [swipe, setSwipe] = useState<number | undefined>();
   const [focused, setFocused] = useState(true);
   const [rnd, setRnd] = useState(0);
+  const [reduced, setReduced] = useState(data);
 
   useEffect(() => {
     window.addEventListener('blur', () => setFocused(false));
@@ -45,7 +48,7 @@ const Carousel: React.FC<{
 
   const getPrev = (m = move, c = current) => {
     setMove(m + 1);
-    setCurrent(c - 1 < 0 ? data.length - 1 : c - 1);
+    setCurrent(c - 1 < 0 ? reduced.length - 1 : c - 1);
   };
 
   const getPos = (i: number) => {
@@ -55,7 +58,7 @@ const Carousel: React.FC<{
 
   const getNext = (m = move, c = current) => {
     setMove(move - 1);
-    setCurrent(c + 1 >= data.length ? 0 : c + 1);
+    setCurrent(c + 1 >= reduced.length ? 0 : c + 1);
   };
 
   const getOffsets = () => {
