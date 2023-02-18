@@ -12,18 +12,19 @@
     "react-dom": "^16.13.1"
   },
   "devDependencies": {
-    "@rollup/plugin-typescript": "^6.0.0",
-    "@types/classnames": "^2.2.10",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "@types/classnames": "^2.3.1",
     "@types/react": "^16.9.49",
     "@types/react-dom": "^16.9.8",
-    "autoprefixer": "^9.8.6",
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.21",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "rollup": "^2.28.2",
-    "rollup-plugin-postcss-modules": "^2.0.2",
-    "rollup-plugin-sass": "^1.2.2",
-    "tslib": "^2.0.1",
-    "typescript": "^4.0.3"
+    "rollup": "^3.17.1",
+    "rollup-plugin-postcss-modules": "^2.1.1",
+    "rollup-plugin-sass": "^1.12.17",
+    "tslib": "^2.5.0",
+    "typescript": "^4.9.5"
   },
   "files": [
     "dist",
@@ -31,7 +32,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andrewbrodko/bearing.git"
+    "url": "git+https://github.com/rosingrind/bearing.git"
   },
   "keywords": [
     "carousel",
@@ -42,15 +43,15 @@
     "react",
     "typescript"
   ],
-  "author": "andrewbrodko <work.andrewbrodko@gmail.com>",
+  "author": "Adam Barton <108860307+rosingrind@users.noreply.github.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/andrewbrodko/bearing/issues"
+    "url": "https://github.com/rosingrind/bearing/issues"
   },
   "exports": {
     "./easings/": "./dist/easings/"
   },
-  "homepage": "https://github.com/andrewbrodko/bearing#readme",
+  "homepage": "https://github.com/rosingrind/bearing#readme",
   "dependencies": {
     "classnames": "^2.2.6"
   }
