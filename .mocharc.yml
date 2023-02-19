@@ -1,4 +1,3 @@
-loader: ts-node/esm
 require:
   - ts-node/register
   - source-map-support/register

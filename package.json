@@ -9,7 +9,7 @@
     "format-check": "prettier --check 'src/**/*.ts[x]'",
     "lint": "eslint src/**/*.ts[x]",
     "start": "rollup -c -w --configPlugin typescript",
-    "test": "mocha 'test/**'",
+    "test": "nyc mocha 'test/**'",
     "all": "yarn run build && yarn run format-check && yarn run lint && yarn test"
   },
   "peerDependencies": {
