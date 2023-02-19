@@ -4,3 +4,6 @@
 /rollup.config.ts
 /tsconfig.json
 /src
+/test
+/.nyc_output
+/coverage

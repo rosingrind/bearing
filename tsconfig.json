@@ -11,5 +11,12 @@
     "emitDecoratorMetadata": true,
     "typeRoots": ["node_modules/@types"]
   },
-  "exclude": ["node_modules", "dist", "easing"]
+  "ts-node": {
+    "experimentalResolver": true,
+    "compilerOptions": {
+      "module": "commonjs",
+      "moduleResolution": "node"
+    }
+  },
+  "exclude": ["node_modules", "dist", "easing", "test"]
 }
