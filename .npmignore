@@ -1,8 +1,7 @@
-/.idea
-/dist
-/easings
+.idea
+dist
+easing
 .gitignore
 .github
-.babelrc
-rollup.config.js
+rollup.config.ts
 tsconfig.json

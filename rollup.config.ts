@@ -5,7 +5,7 @@ import postcss from 'rollup-plugin-postcss-modules';
 import autoprefixer from 'autoprefixer';
 
 const bearing: RollupOptions = {
-  input: './src/index.tsx',
+  input: './src/bearing/index.tsx',
   output: {
     dir: './dist',
     format: 'cjs',
@@ -19,8 +19,7 @@ const bearing: RollupOptions = {
       writeDefinitions: false,
     }),
     typescript({
-      exclude: ['./src/easings/**'],
-      rootDir: './src',
+      rootDir: './src/bearing',
       declaration: true,
       declarationMap: true,
       declarationDir: './dist',
@@ -29,24 +28,24 @@ const bearing: RollupOptions = {
   external: ['react', 'react-dom', 'classnames/bind'],
 };
 
-const easings: RollupOptions = {
-  input: './src/easings/index.ts',
+const easing: RollupOptions = {
+  input: './src/easing/index.ts',
   output: {
-    dir: './easings',
+    dir: './easing',
     format: 'cjs',
     exports: 'named',
     sourcemap: true,
   },
   plugins: [
     typescript({
-      rootDir: './src/easings',
+      rootDir: './src/easing',
       declaration: true,
       declarationMap: true,
-      declarationDir: './easings',
+      declarationDir: './easing',
     }),
   ],
 };
 
-const configs: RollupOptions[] = [bearing, easings];
+const configs: RollupOptions[] = [bearing, easing];
 
 export default configs;

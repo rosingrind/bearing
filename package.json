@@ -28,7 +28,7 @@
   },
   "files": [
     "dist",
-    "easings"
+    "easing"
   ],
   "repository": {
     "type": "git",
@@ -47,9 +47,6 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/rosingrind/bearing/issues"
-  },
-  "exports": {
-    "./easings/": "./dist/easings/"
   },
   "homepage": "https://github.com/rosingrind/bearing#readme",
   "dependencies": {
