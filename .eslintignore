@@ -1,3 +1,5 @@
 /node_modules
 /dist
 /easing
+/.nyc_output
+/coverage
