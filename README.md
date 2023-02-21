@@ -1,4 +1,4 @@
-# bearing &middot; [![NPM](https://img.shields.io/npm/l/bearing)](https://github.com/andrewbrodko/bearing/blob/master/LICENSE) [![npm](https://img.shields.io/npm/v/bearing)](https://www.npmjs.com/package/bearing) [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/andrewbrodko/bearing/master?label=master)](https://github.com/andrewbrodko/bearing/tree/master) [![npm bundle size](https://img.shields.io/bundlephobia/min/bearing)](https://www.npmjs.com/package/bearing)
+# bearing &middot; [![NPM](https://img.shields.io/npm/l/bearing)](https://github.com/andrewbrodko/bearing/blob/master/LICENSE) [![npm](https://img.shields.io/npm/v/bearing)](https://www.npmjs.com/package/bearing) [![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/rosingrind/bearing/main.yml?branch=main)](https://github.com/andrewbrodko/bearing/tree/master) [![npm bundle size](https://img.shields.io/bundlephobia/min/bearing)](https://www.npmjs.com/package/bearing)
 
 Bearing is a lightweight TypeScript carousel component for React.
 
