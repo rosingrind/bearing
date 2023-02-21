@@ -1,7 +1,7 @@
 import { RollupOptions } from "rollup";
 
 import typescript from '@rollup/plugin-typescript';
-import postcss from 'rollup-plugin-postcss-modules';
+import postcss from 'rollup-plugin-postcss-modules'
 import autoprefixer from 'autoprefixer';
 
 const bearing: RollupOptions = {
@@ -15,8 +15,14 @@ const bearing: RollupOptions = {
   plugins: [
     postcss({
       plugins: [autoprefixer],
-      extract: false,
-      writeDefinitions: false,
+      sourceMap: true,
+      modules: {
+        generateScopedName: '[local]-[hash:base64:4]',
+        hashPrefix: 'prefix'
+      },
+      minimize: {
+        preset: 'default'
+      }
     }),
     typescript({
       rootDir: './src/bearing',
