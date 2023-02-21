@@ -8,7 +8,7 @@ const bearing: RollupOptions = {
   input: './src/bearing/index.tsx',
   output: {
     dir: './dist',
-    format: 'cjs',
+    format: 'esm',
     exports: 'named',
     sourcemap: true,
   },
@@ -38,7 +38,7 @@ const easing: RollupOptions = {
   input: './src/easing/index.ts',
   output: {
     dir: './easing',
-    format: 'cjs',
+    format: 'esm',
     exports: 'named',
     sourcemap: true,
   },
