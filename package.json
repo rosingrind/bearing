@@ -62,7 +62,10 @@
     "react",
     "typescript"
   ],
-  "author": "Adam Barton <108860307+rosingrind@users.noreply.github.com>",
+  "author": {
+    "name": "Adam Barton",
+    "email": "<108860307+rosingrind@users.noreply.github.com>"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/rosingrind/bearing/issues"
