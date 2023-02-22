@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import classNames from 'classnames/bind';
 import styles from './index.module.scss';
 import './index.scss';
 import Slide from './Slide';
 
-const cx = classNames.bind(styles);
-
-const Carousel: React.FC<{
+type Props = {
   slides: string[];
   size: {
     width: number;
@@ -17,34 +15,20 @@ const Carousel: React.FC<{
     speed: number;
     interval?: number;
   };
-}> = ({ slides: data, size, animation, animation: { interval } }) => {
+};
+
+const cx = classNames.bind(styles);
+
+export default function Carousel(props: Props) {
+  const {
+    slides: data, size, animation, animation: { interval },
+  } = props;
+
   const [current, setCurrent] = useState(0);
   const [move, setMove] = useState(0);
-  const [slides, setSlides] = useState(
-    data.length <= 3 ? [...data, ...data] : data
-  );
-  const [swipe, setSwipe] = useState<number | undefined>();
+  const [slides] = useState(data.length <= 3 ? [...data, ...data, ...data] : data);
   const [focused, setFocused] = useState(true);
-  const [rnd, setRnd] = useState(0);
-  const [reduced, setReduced] = useState(data);
-
-  useEffect(() => {
-    window.addEventListener('blur', () => setFocused(false));
-    window.addEventListener('focus', () => setFocused(true));
-    const int = interval
-      ? setInterval(() => setRnd(Math.random() * 10), interval)
-      : 0;
-
-    return () => {
-      window.removeEventListener('blur', () => setFocused(false));
-      window.removeEventListener('focus', () => () => setFocused(true));
-      if (interval) clearInterval(int);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (focused) getNext();
-  }, [rnd]);
+  const [reduced] = useState(data);
 
   const getPrev = (m = move, c = current) => {
     setMove(m + 1);
@@ -56,22 +40,28 @@ const Carousel: React.FC<{
     setCurrent(i);
   };
 
-  const getNext = (m = move, c = current) => {
-    setMove(move - 1);
+  const getNext = useCallback((m = move, c = current) => {
+    setMove(m - 1);
     setCurrent(c + 1 >= reduced.length ? 0 : c + 1);
-  };
+  }, [current, move, reduced.length]);
 
-  const getOffsets = () => {
-    const half = Math.floor(slides.length / 2);
-    const gap = half - current;
-    let arr = slides.map((s, i) => i - half);
-    gap > 0 ? arr.push(...arr.splice(0, gap)) : arr.unshift(...arr.splice(gap));
+  useEffect(() => {
+    window.addEventListener('blur', () => setFocused(false));
+    window.addEventListener('focus', () => setFocused(true));
+    const int = interval ? setInterval(() => focused && getNext(), interval) : 0;
 
-    return arr;
-  };
+    return () => {
+      window.removeEventListener('blur', () => setFocused(false));
+      window.removeEventListener('focus', () => () => setFocused(true));
+      if (interval) clearInterval(int);
+    };
+  }, [focused, getNext, interval]);
 
   const cns = {
-    dot: (selected: boolean) => cx({ dot: true, selected }),
+    dot: (selected: boolean) => cx({
+      dot: true,
+      selected,
+    }),
   };
 
   return (
@@ -86,7 +76,7 @@ const Carousel: React.FC<{
         <div>
           {slides.map((s, key) => (
             <Slide
-              key={key}
+              key={s}
               src={s}
               animation={animation}
               offset={key}
@@ -97,25 +87,21 @@ const Carousel: React.FC<{
           ))}
         </div>
         <span>
-          <i className={styles.btn} onClick={() => getPrev()}>
+          <button type="button" className={styles.btn} onClick={() => getPrev()}>
             {' '}
-          </i>
+          </button>
           <span className={styles.dots}>
             {data.map((i, key) => (
-              <i
-                key={key}
-                className={cns.dot(key === current)}
-                onClick={() => getPos(key)}
-              ></i>
+              <button type="button" key={i} className={cns.dot(key === current)} onClick={() => getPos(key)}>
+                {' '}
+              </button>
             ))}
           </span>
-          <i className={styles.btn} onClick={() => getNext()}>
+          <button type="button" className={styles.btn} onClick={() => getNext()}>
             {' '}
-          </i>
+          </button>
         </span>
       </div>
     </div>
   );
-};
-
-export default Carousel;
+}

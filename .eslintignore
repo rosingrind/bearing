@@ -2,7 +2,9 @@
 /dist
 /easing
 /coverage
-!.*rc
 .*
+!.*rc
+!.github
+CODEOWNERS
 LICENSE
 yarn.lock
