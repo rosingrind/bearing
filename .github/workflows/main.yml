@@ -23,3 +23,6 @@ jobs:
           node-version: 16.x
       - run: yarn install --frozen-lockfile
       - run: yarn run all
+      - run: yarn run format-check
+      - run: yarn run lint-check
+      - run: yarn run style-check

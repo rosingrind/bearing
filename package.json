@@ -9,14 +9,15 @@
     "build": "rollup -c --configPlugin typescript",
     "format": "prettier --write \"{**/*,*}\"",
     "format-check": "prettier --check \"{**/*,*}\"",
-    "lint": "yarn lint-check --fix",
+    "lint": "yarn run lint-check --fix",
     "lint-check": "eslint \"{**/*,*}.{ts,tsx}\"",
-    "style": "yarn style-check --fix",
+    "style": "yarn run style-check --fix",
     "style-check": "stylelint \"{**/*,*}.{scss,sass}\"",
     "start": "rollup -c -w --configPlugin typescript",
     "test": "mocha 'test/**'",
     "coverage": "nyc yarn run test",
-    "all": "yarn build && yarn format-check && yarn lint-check && yarn style-check && yarn test"
+    "all": "yarn run build && yarn run test",
+    "yalc": "yalc publish --sig --push"
   },
   "peerDependencies": {
     "react": "^18.2.0",
