@@ -15,7 +15,12 @@
     {
       "files": ["*.test.ts", "*.test.tsx"],
       "rules": {
-        "prefer-arrow-callback": "warn"
+        "prefer-arrow-callback": [
+          "warn",
+          {
+            "allowNamedFunctions": true
+          }
+        ]
       }
     }
   ],
@@ -27,6 +32,8 @@
   "plugins": ["react", "mocha", "istanbul"],
   "rules": {
     "istanbul/no-ignore-file": "warn",
-    "istanbul/prefer-ignore-reason": "warn"
+    "istanbul/prefer-ignore-reason": "warn",
+    "max-len": "warn",
+    "no-nested-ternary": "warn"
   }
 }
