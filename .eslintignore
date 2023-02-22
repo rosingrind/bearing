@@ -3,6 +3,7 @@
 /easing
 /coverage
 .*
+!.*rc.*
 !.*rc
 !.github
 CODEOWNERS

@@ -31,10 +31,8 @@
     "sourceType": "module",
     "project": "./tsconfig.json"
   },
-  "plugins": ["@typescript-eslint", "react", "mocha", "istanbul"],
+  "plugins": ["@typescript-eslint", "react", "mocha"],
   "rules": {
-    "istanbul/no-ignore-file": "warn",
-    "istanbul/prefer-ignore-reason": "warn",
     "max-len": "warn",
     "no-nested-ternary": "warn"
   }
