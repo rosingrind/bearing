@@ -5,6 +5,7 @@
     "node": true
   },
   "extends": [
+    "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:mocha/recommended",
     "airbnb",
@@ -24,12 +25,13 @@
       }
     }
   ],
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module",
     "project": "./tsconfig.json"
   },
-  "plugins": ["react", "mocha", "istanbul"],
+  "plugins": ["@typescript-eslint", "react", "mocha", "istanbul"],
   "rules": {
     "istanbul/no-ignore-file": "warn",
     "istanbul/prefer-ignore-reason": "warn",
