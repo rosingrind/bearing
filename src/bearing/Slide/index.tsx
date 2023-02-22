@@ -55,7 +55,7 @@ const Slide: React.FC<{
     const end = offset + move;
     const delta = end - start;
 
-    if (timing)
+    if (timing) {
       setAnim(
         animate({
           timing: timing,
@@ -64,8 +64,9 @@ const Slide: React.FC<{
             setCurrent(point);
           },
           duration: speed,
-        })
+        }),
       );
+    }
   }, [offset, move]);
 
   const pos = (((current % len) + len) % len) - half;

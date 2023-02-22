@@ -20,9 +20,7 @@ const Carousel: React.FC<{
 }> = ({ slides: data, size, animation, animation: { interval } }) => {
   const [current, setCurrent] = useState(0);
   const [move, setMove] = useState(0);
-  const [slides, setSlides] = useState(
-    data.length <= 3 ? [...data, ...data] : data
-  );
+  const [slides, setSlides] = useState(data.length <= 3 ? [...data, ...data] : data);
   const [swipe, setSwipe] = useState<number | undefined>();
   const [focused, setFocused] = useState(true);
   const [rnd, setRnd] = useState(0);
@@ -31,9 +29,7 @@ const Carousel: React.FC<{
   useEffect(() => {
     window.addEventListener('blur', () => setFocused(false));
     window.addEventListener('focus', () => setFocused(true));
-    const int = interval
-      ? setInterval(() => setRnd(Math.random() * 10), interval)
-      : 0;
+    const int = interval ? setInterval(() => setRnd(Math.random() * 10), interval) : 0;
 
     return () => {
       window.removeEventListener('blur', () => setFocused(false));
@@ -71,7 +67,11 @@ const Carousel: React.FC<{
   };
 
   const cns = {
-    dot: (selected: boolean) => cx({ dot: true, selected }),
+    dot: (selected: boolean) =>
+      cx({
+        dot: true,
+        selected,
+      }),
   };
 
   return (
@@ -102,11 +102,7 @@ const Carousel: React.FC<{
           </i>
           <span className={styles.dots}>
             {data.map((i, key) => (
-              <i
-                key={key}
-                className={cns.dot(key === current)}
-                onClick={() => getPos(key)}
-              ></i>
+              <i key={key} className={cns.dot(key === current)} onClick={() => getPos(key)}></i>
             ))}
           </span>
           <i className={styles.btn} onClick={() => getNext()}>

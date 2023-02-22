@@ -1,12 +1,12 @@
 .slide {
   position: absolute;
-  padding: 0 8px;
   display: flex;
   justify-content: center;
+  padding: 0 8px;
 
-  & > img {
-    height: 100%;
+  img {
     width: 100%;
+    height: 100%;
     object-fit: cover;
   }
 }

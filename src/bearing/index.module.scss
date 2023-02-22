@@ -3,22 +3,21 @@
 .wrapper {
   width: 100%;
   overflow: hidden;
-
   mask-image: linear-gradient(
     to right,
-    rgba(0, 0, 0, 0.2) calc(calc(100% - 1138px) / 16),
-    rgba(0, 0, 0, 1) calc(calc(100% - 1138px) / 2),
-    rgba(0, 0, 0, 1) calc(1138px + calc(100% - 1138px) / 2),
-    rgba(0, 0, 0, 0.2) calc(1138px + calc(100% - 1138px) / 16 * 15)
+    rgb(0 0 0 / 20%) calc(calc(100% - 1138px) / 16),
+    rgb(0 0 0 / 100%) calc(calc(100% - 1138px) / 2),
+    rgb(0 0 0 / 100%) calc(1138px + calc(100% - 1138px) / 2),
+    rgb(0 0 0 / 20%) calc(1138px + calc(100% - 1138px) / 16 * 15)
   );
 }
 
 .carousel {
   position: relative;
-  margin: auto;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  margin: auto;
 
   & > div {
     position: relative;
@@ -38,8 +37,8 @@
 }
 
 .btn {
-  height: 100%;
   width: 6rem;
+  height: 100%;
   cursor: pointer;
 
   &:first-of-type {
@@ -52,22 +51,22 @@
 }
 
 .dots {
+  bottom: 0;
   display: flex;
   justify-content: center;
   width: 100%;
-  bottom: 0;
 }
 
 .dot {
-  height: 7px;
   width: 7px;
+  height: 7px;
   margin: 8px;
+  cursor: pointer;
   border: 2px solid white;
   border-radius: 50%;
   transition: ease-in-out fadetime;
-  cursor: pointer;
 
   &.selected {
-    background: white;
+    background-color: white;
   }
 }

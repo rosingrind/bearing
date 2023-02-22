@@ -26,12 +26,10 @@ const bounceOut = (x: number): number => {
 
 export const easeInQuad = (x: number) => x * x;
 export const easeOutQuad = (x: number) => 1 - (1 - x) * (1 - x);
-export const easeInOutQuad = (x: number) =>
-  x < 0.5 ? 2 * x * x : 1 - pow(-2 * x + 2, 2) / 2;
+export const easeInOutQuad = (x: number) => (x < 0.5 ? 2 * x * x : 1 - pow(-2 * x + 2, 2) / 2);
 export const easeInCubic = (x: number) => x * x * x;
 export const easeOutCubic = (x: number) => 1 - pow(1 - x, 3);
-export const easeInOutCubic = (x: number) =>
-  x < 0.5 ? 4 * x * x * x : 1 - pow(-2 * x + 2, 3) / 2;
+export const easeInOutCubic = (x: number) => (x < 0.5 ? 4 * x * x * x : 1 - pow(-2 * x + 2, 3) / 2);
 export const easeInQuart = (x: number) => x * x * x * x;
 export const easeOutQuart = (x: number) => 1 - pow(1 - x, 4);
 export const easeInOutQuart = (x: number) =>
@@ -46,22 +44,13 @@ export const easeInOutSine = (x: number) => -(cos(PI * x) - 1) / 2;
 export const easeInExpo = (x: number) => (x === 0 ? 0 : pow(2, 10 * x - 10));
 export const easeOutExpo = (x: number) => (x === 1 ? 1 : 1 - pow(2, -10 * x));
 export const easeInOutExpo = (x: number) =>
-  x === 0
-    ? 0
-    : x === 1
-    ? 1
-    : x < 0.5
-    ? pow(2, 20 * x - 10) / 2
-    : (2 - pow(2, -20 * x + 10)) / 2;
+  x === 0 ? 0 : x === 1 ? 1 : x < 0.5 ? pow(2, 20 * x - 10) / 2 : (2 - pow(2, -20 * x + 10)) / 2;
 export const easeInCirc = (x: number) => 1 - sqrt(1 - pow(x, 2));
 export const easeOutCirc = (x: number) => sqrt(1 - pow(x - 1, 2));
 export const easeInOutCirc = (x: number) =>
-  x < 0.5
-    ? (1 - sqrt(1 - pow(2 * x, 2))) / 2
-    : (sqrt(1 - pow(-2 * x + 2, 2)) + 1) / 2;
+  x < 0.5 ? (1 - sqrt(1 - pow(2 * x, 2))) / 2 : (sqrt(1 - pow(-2 * x + 2, 2)) + 1) / 2;
 export const easeInBack = (x: number) => c3 * x * x * x - c1 * x * x;
-export const easeOutBack = (x: number) =>
-  1 + c3 * pow(x - 1, 3) + c1 * pow(x - 1, 2);
+export const easeOutBack = (x: number) => 1 + c3 * pow(x - 1, 3) + c1 * pow(x - 1, 2);
 export const easeInOutBack = (x: number) =>
   x < 0.5
     ? (pow(2 * x, 2) * ((c2 + 1) * 2 * x - c2)) / 2

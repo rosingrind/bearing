@@ -11,7 +11,14 @@
     "airbnb-typescript",
     "airbnb/hooks"
   ],
-  "overrides": [],
+  "overrides": [
+    {
+      "files": ["*.test.ts", "*.test.tsx"],
+      "rules": {
+        "prefer-arrow-callback": "warn"
+      }
+    }
+  ],
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module",
@@ -19,7 +26,7 @@
   },
   "plugins": ["react", "mocha", "istanbul"],
   "rules": {
-    "istanbul/no-ignore-file": "error",
-    "istanbul/prefer-ignore-reason": "error"
+    "istanbul/no-ignore-file": "warn",
+    "istanbul/prefer-ignore-reason": "warn"
   }
 }
