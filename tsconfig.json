@@ -9,5 +9,5 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
   },
-  "exclude": ["node_modules", "dist", "easing", "test"]
+  "exclude": ["node_modules", "dist", "easing"]
 }
