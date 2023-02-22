@@ -1,11 +1,5 @@
 {
-  "require": [
-    "ts-node/register",
-    "source-map-support/register"
-  ],
-  "node-option": [
-    "loader=ts-node/esm",
-    "experimental-specifier-resolution=node"
-  ],
+  "require": ["ts-node/register", "source-map-support/register"],
+  "node-option": ["loader=ts-node/esm", "experimental-specifier-resolution=node"],
   "recursive": true
 }
