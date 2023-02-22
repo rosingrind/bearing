@@ -7,15 +7,16 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "rollup -c --configPlugin typescript",
-    "format": "prettier --write .",
-    "format-check": "prettier --check .",
-    "lint": "eslint .",
+    "format": "prettier --write \"{**/*,*}\"",
+    "format-check": "prettier --check \"{**/*,*}\"",
+    "lint": "yarn lint-check --fix",
+    "lint-check": "eslint \"{**/*,*}.{ts,tsx}\"",
     "style": "yarn style-check --fix",
     "style-check": "stylelint \"{**/*,*}.{scss,sass}\"",
     "start": "rollup -c -w --configPlugin typescript",
     "test": "mocha 'test/**'",
     "coverage": "nyc yarn run test",
-    "all": "yarn run build && yarn run format-check && yarn run lint && yarn test"
+    "all": "yarn build && yarn format-check && yarn lint-check && yarn style-check && yarn test"
   },
   "peerDependencies": {
     "react": "^18.2.0",

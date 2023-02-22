@@ -1,5 +1,8 @@
 /node_modules
 /dist
 /easing
-/.nyc_output
 /coverage
+!.*rc
+.*
+LICENSE
+yarn.lock
