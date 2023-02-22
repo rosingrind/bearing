@@ -1,6 +1,17 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './index.module.scss';
+
+type Props = {
+  src: string;
+  animation: { timing: (x: number) => number; speed: number };
+  offset: number;
+  move: number;
+  len: number;
+  size: {
+    width: number;
+    height: number;
+  };
+};
 
 const animate = ({
   timing,
@@ -13,61 +24,45 @@ const animate = ({
   duration: number;
   callback?: any;
 }) => {
-  let start = performance.now();
-  let pass = true;
-
-  requestAnimationFrame(function animate(time: number) {
+  const start = performance.now();
+  requestAnimationFrame(function frameCallback(time: number) {
     let delta = (time - start) / duration;
     if (delta > 1) delta = 1;
 
-    let calc = timing(delta);
+    const calc = timing(delta);
     draw(calc);
 
-    if (delta < 1 && pass) {
-      requestAnimationFrame(animate);
+    if (delta < 1) {
+      requestAnimationFrame(frameCallback);
     } else {
       callback();
     }
   });
-
-  return { interrupt: () => (pass = false) };
 };
 
-const Slide: React.FC<{
-  src: string;
-  animation: { timing: (x: number) => number; speed: number };
-  offset: number;
-  move: number;
-  len: number;
-  size: {
-    width: number;
-    height: number;
-  };
-}> = ({ src, animation: { timing, speed }, offset, move, len, size }) => {
+export default function Slide(props: Props) {
+  const {
+    src, animation: { timing, speed }, offset, move, len, size,
+  } = props;
+
   const [current, setCurrent] = useState(offset);
-  const [anim, setAnim] = useState<{ interrupt: () => void }>();
 
   const half = Math.floor(len / 2);
   useEffect(() => {
-    anim?.interrupt();
-
     const start = current;
     const end = offset + move;
     const delta = end - start;
 
-    if (timing) {
-      setAnim(
-        animate({
-          timing: timing,
-          draw: (p) => {
-            const point = current + delta * p;
-            setCurrent(point);
-          },
-          duration: speed,
-        }),
-      );
-    }
-  }, [offset, move]);
+    animate({
+      timing,
+      draw: (p) => {
+        const point = current + delta * p;
+        setCurrent(point);
+      },
+      duration: speed,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [offset, move, speed, timing]);
 
   const pos = (((current % len) + len) % len) - half;
   return (
@@ -82,6 +77,4 @@ const Slide: React.FC<{
       <img src={src} alt={src} />
     </div>
   );
-};
-
-export default Slide;
+}
