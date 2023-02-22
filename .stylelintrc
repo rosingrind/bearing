@@ -1,0 +1,11 @@
+{
+  "extends": [
+    "stylelint-config-standard-scss",
+    "stylelint-config-recess-order",
+    "stylelint-config-sass-guidelines"
+  ],
+  "rules": {
+    "function-parentheses-space-inside": "never-single-line",
+    "order/properties-alphabetical-order": null
+  }
+}
