@@ -18,25 +18,26 @@
   align-items: center;
   justify-content: center;
   margin: auto;
+}
 
-  & > div {
-    position: relative;
-    display: flex;
-    height: 100%;
-    margin-right: 100%;
-  }
+.carousel > div {
+  position: relative;
+  display: flex;
+  height: 100%;
+  margin-right: 100%;
+}
 
-  & > span {
-    display: contents;
+.carousel > span {
+  display: contents;
+}
 
-    & > * {
-      position: absolute;
-      padding: 8px;
-    }
-  }
+.carousel > span > * {
+  position: absolute;
+  padding: 8px;
 }
 
 .btn {
+  all: unset;
   width: 6rem;
   height: 100%;
   cursor: pointer;
@@ -62,11 +63,11 @@
   height: 7px;
   margin: 8px;
   cursor: pointer;
-  border: 2px solid white;
+  border: 2px solid #fff;
   border-radius: 50%;
   transition: ease-in-out fadetime;
 
   &.selected {
-    background-color: white;
+    background-color: #fff;
   }
 }

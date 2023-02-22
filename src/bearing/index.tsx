@@ -97,17 +97,19 @@ const Carousel: React.FC<{
           ))}
         </div>
         <span>
-          <i className={styles.btn} onClick={() => getPrev()}>
+          <button type="button" className={styles.btn} onClick={() => getPrev()}>
             {' '}
-          </i>
+          </button>
           <span className={styles.dots}>
             {data.map((i, key) => (
-              <i key={key} className={cns.dot(key === current)} onClick={() => getPos(key)}></i>
+              <button type="button" key={i} className={cns.dot(key === current)} onClick={() => getPos(key)}>
+                {' '}
+              </button>
             ))}
           </span>
-          <i className={styles.btn} onClick={() => getNext()}>
+          <button type="button" className={styles.btn} onClick={() => getNext()}>
             {' '}
-          </i>
+          </button>
         </span>
       </div>
     </div>
