@@ -79,7 +79,7 @@ const props = {
 
 ### Examples
 
-You can use [codesandbox](https://codesandbox.io/s/cool-sea-zmbhw7?file=/src/App.tsx:0-1893) or
+You can use [codesandbox](https://codesandbox.io/s/cool-sea-zmbhw7) or
 [bearing-home](https://github.com/rosingrind/bearing-home) repo as a reference point for your app
 
 ## Contributing
