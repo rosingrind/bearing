@@ -2,7 +2,7 @@
   "name": "bearing",
   "type": "module",
   "version": "0.6.0",
-  "description": "A lightweight customizable \"animation frame\"-bound carousel",
+  "description": "A carousel component",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -72,10 +72,7 @@
     "carousel",
     "gallery",
     "slideshow",
-    "lightweight",
-    "slider",
-    "react",
-    "typescript"
+    "react"
   ],
   "author": {
     "name": "Adam Barton",
@@ -85,7 +82,7 @@
   "bugs": {
     "url": "https://github.com/rosingrind/bearing/issues"
   },
-  "homepage": "https://github.com/rosingrind/bearing#readme",
+  "homepage": "https://rosingrind.github.io/bearing-home/",
   "dependencies": {
     "classnames": "^2.3.2"
   }
