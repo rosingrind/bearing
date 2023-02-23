@@ -86,7 +86,9 @@ You can use [codesandbox](https://codesandbox.io/s/cool-sea-zmbhw7?file=/src/App
 
 ### Issues
 
-In case you encounter bugs or would like to propose a feature, feel free to raise an issue or open a pull request. Consider next rules as you do so:
+In case you encounter bugs or would like to propose a feature, feel free to raise an issue or open a
+pull request. Consider next rules as you do so:
 
-- Sign commits with valid personal key, you can read more about it in [GitHub Docs](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits)
+- Sign commits with valid personal key, you can read more about it in
+  [GitHub Docs](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits)
 - When raising issue about bug, please attach a link to your codesandbox sample
