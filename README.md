@@ -1,9 +1,10 @@
 # bearing &middot; [![NPM](https://img.shields.io/npm/l/bearing)](https://github.com/andrewbrodko/bearing/blob/main/LICENSE) [![npm](https://img.shields.io/npm/v/bearing)](https://www.npmjs.com/package/bearing) [![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/rosingrind/bearing/main.yml?branch=main)](https://github.com/rosingrind/bearing/actions/workflows/main.yml?query=branch:main) [![npm bundle size](https://img.shields.io/bundlephobia/min/bearing)](https://www.npmjs.com/package/bearing)
 
-A lightweight carousel component for React, which is:
+A lightweight carousel for React, which is:
 
-- **Pretty:** It's minimalistic yet good enough for use. You can always extend it as you wish
-- **Simple:** It's not heavy, working fine and tested with Mocha
+- Pretty: It's minimalistic yet good enough for use. You can always extend it as you wish
+- Simple: It's not heavy, working fine and tested with Mocha
+- Quick: A single drop-in component with the rest under the hood
 
 ## Installation
 
