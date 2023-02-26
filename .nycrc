@@ -1,5 +1,5 @@
 {
   "src": "src",
-  "reporter": ["text", "html"],
+  "reporter": ["text", "lcovonly"],
   "all": true
 }
