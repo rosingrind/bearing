@@ -17,6 +17,7 @@ jobs:
     uses: ./.github/workflows/ci.yml
 
   test:
+    needs: CI
     uses: ./.github/workflows/test.yml
     with:
       coverage: true

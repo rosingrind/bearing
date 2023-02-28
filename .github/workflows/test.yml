@@ -25,6 +25,7 @@ jobs:
       - run: yarn run test
 
   c8:
+    continue-on-error: true
     runs-on: ubuntu-latest
     if: ${{ inputs.coverage }}
     steps:
@@ -34,11 +35,12 @@ jobs:
           node-version: 16.x
           cache: 'yarn'
       - run: yarn install --immutable
-      - run: yarn run coverage | tee coverage.md
-        continue-on-error: true
+      - run: yarn run coverage > coverage.md
       - name: Extract and process coverage data
+        if: success() || failure()
         run: |
-          cat coverage.md | grep -E '(.*\|)+' | sed '1d;$d' | perl -lpe 's/(-+)-\|(-+)-\|(-+)-\|(-+)-\|(-+)-\|(-+)-/:\1\|\2:\|\3:\|\4:\|\5:\|:\6/g' | perl -lpe 's/^\s+(\w+\.tsx?)/:bookmark: `\1`/g' | perl -lpe 's/^\s+(\w+)/:card_index_dividers: \1/g' | perl -lpe 's/((\d+(-\d+)?)(,|\s+$))/`\2`\4 /g' > coverage.md
+          cat coverage.md | grep -E '(.+\|.+\|)+' | sed '1d;$d' | perl -lpe 's/(-+)-\|(-+)-\|(-+)-\|(-+)-\|(-+)-\|(-+)-/:\1\|\2:\|\3:\|\4:\|\5:\|:\6/g' | perl -lpe 's/^\s+(\w+\.tsx?)/:bookmark: `\1`/g' | perl -lpe 's/^\s+(\w+)/:card_index_dividers: \1/g' | perl -lpe 's/((\d+(-\d+)?)(,|\s+$))/`\2`\4 /g' > coverage.md
       - name: Set coverage summary table
+        if: success() || failure()
         run: |
           cat coverage.md >> $GITHUB_STEP_SUMMARY

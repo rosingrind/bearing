@@ -1,5 +1,9 @@
 {
   "src": "src",
-  "reporter": ["text", "lcovonly"],
-  "all": true
+  "reporter": ["text", "html"],
+  "check-coverage": true,
+  "all": true,
+  "branches": 80,
+  "lines": 80,
+  "functions": 80
 }

@@ -14,8 +14,9 @@
     "style": "yarn run style-check --fix",
     "style-check": "stylelint \"{**/*,*}.{scss,sass}\"",
     "start": "rollup -c -w --configPlugin typescript",
-    "test": "mocha --reporter min 'test/**'",
-    "coverage": "c8 yarn run test",
+    "test": "mocha 'test/**'",
+    "dry-test": "yarn run test || true",
+    "coverage": "c8 yarn run dry-test",
     "all": "yarn run build && yarn run test",
     "yalc": "yalc publish --sig --push"
   },
