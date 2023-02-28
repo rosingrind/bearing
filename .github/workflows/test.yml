@@ -1,0 +1,44 @@
+name: test
+
+on:
+  workflow_call:
+    inputs:
+      coverage:
+        required: false
+        type: boolean
+  workflow_dispatch:
+    inputs:
+      coverage:
+        required: false
+        type: boolean
+
+jobs:
+  mocha:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: 'yarn'
+      - run: yarn install --immutable
+      - run: yarn run test
+
+  c8:
+    runs-on: ubuntu-latest
+    if: ${{ inputs.coverage }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: 'yarn'
+      - run: yarn install --immutable
+      - run: yarn run coverage | tee coverage.md
+        continue-on-error: true
+      - name: Extract and process coverage data
+        run: |
+          cat coverage.md | grep -E '(.*\|)+' | sed '1d;$d' | perl -lpe 's/(-+)-\|(-+)-\|(-+)-\|(-+)-\|(-+)-\|(-+)-/:\1\|\2:\|\3:\|\4:\|\5:\|:\6/g' | perl -lpe 's/^\s/:bookmark: /g' | perl -lpe 's/(\w+\.tsx?)/**\1**/g' | perl -lpe 's/(\d+(-\d+)?,)/\1 /g' > coverage.md
+      - name: Set coverage summary table
+        run: |
+          cat coverage.md >> $GITHUB_STEP_SUMMARY
