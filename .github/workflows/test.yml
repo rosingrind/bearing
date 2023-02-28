@@ -38,7 +38,7 @@ jobs:
         continue-on-error: true
       - name: Extract and process coverage data
         run: |
-          cat coverage.md | grep -E '(.*\|)+' | sed '1d;$d' | perl -lpe 's/(-+)-\|(-+)-\|(-+)-\|(-+)-\|(-+)-\|(-+)-/:\1\|\2:\|\3:\|\4:\|\5:\|:\6/g' | perl -lpe 's/^\s/:bookmark: /g' | perl -lpe 's/(\w+\.tsx?)/**\1**/g' | perl -lpe 's/(\d+(-\d+)?,)/\1 /g' > coverage.md
+          cat coverage.md | grep -E '(.*\|)+' | sed '1d;$d' | perl -lpe 's/(-+)-\|(-+)-\|(-+)-\|(-+)-\|(-+)-\|(-+)-/:\1\|\2:\|\3:\|\4:\|\5:\|:\6/g' | perl -lpe 's/^\s+(\w+\.tsx?)/:bookmark: `\1`/g' | perl -lpe 's/^\s+(\w+)/:card_index_dividers: \1/g' | perl -lpe 's/((\d+(-\d+)?)(,|\s+$))/`\2`\4 /g' > coverage.md
       - name: Set coverage summary table
         run: |
           cat coverage.md >> $GITHUB_STEP_SUMMARY
