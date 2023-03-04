@@ -1,5 +1,12 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@bearing": ["src/bearing"],
+      "@bearing/*": ["src/bearing/*"],
+      "@easing": ["src/easing"],
+      "@easing/*": ["src/easing/*"]
+    },
     "typeRoots": ["node_modules/@types", "typings"],
     "jsx": "react",
     "moduleResolution": "node",

@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import * as easing from '../../src/easing';
+import * as easing from '@easing';
 
 describe('easing', function suite() {
   it('easeInQuad', function fn() {
