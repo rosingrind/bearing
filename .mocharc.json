@@ -1,6 +1,12 @@
 {
-  "require": ["ts-node/register", "source-map-support/register"],
+  "require": ["ts-node/register", "test/setup.ts"],
   "reporter": "min",
-  "node-option": ["loader=ts-node/esm", "experimental-specifier-resolution=node"],
+  "ignore": "test/setup.ts",
+  "parallel": true,
+  "node-option": [
+    "experimental-specifier-resolution=node",
+    "experimental-loader=ts-node/esm",
+    "experimental-loader=esm-loader-css"
+  ],
   "recursive": true
 }

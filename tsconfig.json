@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "typeRoots": ["node_modules/@types", "typings"],
     "jsx": "react",
     "moduleResolution": "node",
     "module": "es2020",
@@ -9,5 +10,5 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
   },
-  "exclude": ["node_modules", "dist", "easing"]
+  "exclude": ["node_modules", "dist", "easing", "coverage"]
 }
