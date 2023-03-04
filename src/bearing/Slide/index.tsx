@@ -22,7 +22,7 @@ const animate = ({
   timing: (x: number) => number;
   draw: (p: number) => void;
   duration: number;
-  callback?: any;
+  callback?: () => void;
 }) => {
   const start = performance.now();
   requestAnimationFrame(function frameCallback(time: number) {

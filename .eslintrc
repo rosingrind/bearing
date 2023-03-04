@@ -33,6 +33,7 @@
   },
   "plugins": ["@typescript-eslint", "react", "mocha"],
   "rules": {
+    "no-restricted-syntax": "warn",
     "max-len": "warn",
     "no-nested-ternary": "warn"
   }
